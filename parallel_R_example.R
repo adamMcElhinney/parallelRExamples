@@ -16,10 +16,10 @@ registerDoParallel(cl)
 getDoParWorkers()
 
 
-# 3 main ways of running things in parallel
-# 1. foreach
+# 3 main ways of running things in parallel (descending order of preference)
+# 1. Other libraries (like caret)
 # 2. parallel apply functions
-# 3. Other libraries (like caret)
+# 3. foreach
 
 # For-each
 startVal = 1
@@ -98,7 +98,7 @@ foreach(i = startVal : 10, .packages = c('MASS')) %dopar% {
 
 
 # 2nd way to parallelize code: parallel apply functions
-endVal = 1000
+endVal = 10000
 system.time(parLapply(cl, list(1:endVal), sqrt))
 system.time(lapply(list(1:endVal), sqrt))
 
